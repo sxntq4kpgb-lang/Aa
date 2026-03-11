@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>지역 사회 의견 나눔</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f6fb;
+margin:0;
+padding:40px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+}
+
+.issue-box{
+background:#eef2ff;
+padding:20px;
+border-radius:10px;
+margin-bottom:30px;
+}
+
+.vote-box{
+background:#f7f7f7;
+padding:20px;
+border-radius:10px;
+margin-bottom:30px;
+text-align:center;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+border:none;
+border-radius:8px;
+background:#4f6cff;
+color:white;
+}
+
+.result{
+font-size:18px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>지역 사회 문제 토론</h1>
+
+<div class="issue-box">
+<h2>이슈 내용</h2>
+<p>
+이곳에 토론할 지역 사회 문제를 작성하세요.  
+예: 학교 주변 쓰레기 문제 해결 방안.
+</p>
+</div>
+
+<div class="vote-box">
+
+<h2>투표</h2>
+
+<button onclick="voteYes()">찬성</button>
+<button onclick="voteNo()">반대</button>
+
+<div class="result">
+찬성: <span id="yesCount">0</span>표  
+반대: <span id="noCount">0</span>표
+</div>
+
+</div>
+
+<h2>의견 작성</h2>
+
+<script src="https://utteranc.es/client.js"
+repo="sxntq4kpgb-lang/Abc"
+issue-term="pathname"
+theme="github-light"
+crossorigin="anonymous"
+async>
+</script>
+
+</div>
+
+<script>
+
+let yes = localStorage.getItem("yesVote") || 0;
+let no = localStorage.getItem("noVote") || 0;
+
+document.getElementById("yesCount").innerText = yes;
+document.getElementById("noCount").innerText = no;
+
+function voteYes(){
+
+yes++;
+localStorage.setItem("yesVote", yes);
+document.getElementById("yesCount").innerText = yes;
+
+}
+
+function voteNo(){
+
+no++;
+localStorage.setItem("noVote", no);
+document.getElementById("noCount").innerText = no;
+
+}
+
+</script>
+
+</body>
+</html>
